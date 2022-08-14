@@ -1,0 +1,11 @@
+<h2>Editar Tipo Servicio</h2>
+
+<app-formulario-tipo-servicio 
+*ngIf="modelo"
+[errores]="errores"
+[modelo]="modelo"
+(guardarCambios)="guardarCambios($event)"
+>
+</app-formulario-tipo-servicio>
+
+<mat-spinner *ngIf="!modelo"></mat-spinner>

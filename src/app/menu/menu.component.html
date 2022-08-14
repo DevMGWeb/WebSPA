@@ -1,0 +1,58 @@
+<mat-toolbar color="primary">
+    <!-- <button mat-icon-button class="example-icon" 
+        (click)="toggleSidenav()"
+        aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+    </button> -->
+    <span>
+        <a routerLink="" matTooltip="Go to the main content"  mat-button>
+            <mat-icon>pages</mat-icon> App Masajes
+        </a>
+    </span>
+    <!-- <div>
+        <span class="example-spacer"></span>
+        <button mat-icon-button class="example-icon favorite-icon"
+            matTooltip="My loves" 
+            routerLink="/paquetes" 
+            aria-label="Example icon-button with heart icon">
+        <mat-icon>favorite</mat-icon>
+        </button>
+    </div>
+    <div>
+        <button mat-icon-button class="example-icon" 
+        matTooltip="Shares this pages" 
+        (click)="copyThisLink()" 
+        aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+        </button>
+    </div> -->
+    <div>
+        <a mat-button routerLink="/sucursales">
+            Sucursales
+        </a>
+    </div>
+    <div>
+        <a mat-button routerLink="/tipo-servicios">
+            Tipo Servicio
+        </a>
+    </div>
+    <div>
+        <a mat-button routerLink="/servicios">
+            Servicios
+        </a>
+    </div>
+    <div>
+        <a mat-button routerLink="/paquetes">
+            Paquetes
+        </a>
+    </div>
+    <!-- <div>
+        <a mat-button routerLink="/paquetes">
+            Usuarios
+        </a>
+    </div> -->
+    <div class="espacio"></div>
+
+    <a mat-button routerLink="login">Login <mat-icon>login</mat-icon> </a>
+    <a mat-button routerLink="registro">Registro <mat-icon>add</mat-icon></a>
+</mat-toolbar>

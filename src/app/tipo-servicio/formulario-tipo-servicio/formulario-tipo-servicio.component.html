@@ -1,0 +1,29 @@
+<app-mostrar-errores [errores]="errores"></app-mostrar-errores>
+
+<form [formGroup]="form" (submit)="OnSubmit()">
+    <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input formControlName="nombre" matInput />
+        <mat-error *ngIf="form.invalid">El campo nombre es requerido</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Descripcion</mat-label>
+        <textarea formControlName="descripcion" matInput></textarea>
+    </mat-form-field>
+
+    <h3>Seleccionar Poster</h3>
+    <div style="margin-bottom: 1rem;">
+        <app-input-img
+        [urlImagenActual]="modelo?.poster"
+        (archivoSeleccionado)="archivoSeleccionado($event)"
+        ></app-input-img>
+    </div>
+  
+    <mat-checkbox formControlName="estado">Estado</mat-checkbox>
+
+    <mat-checkbox formControlName="mostrarEnElMenuPrincipal" style="margin-left:10px;">Mostrar en la pagina principal</mat-checkbox>
+    <div>
+        <button mat-flat-button color="primary" [disabled]="form.invalid">Guardar Cambios</button>
+        <a mat-stroked-button routerLink="/tipo-servicios">Cancelar</a>
+    </div>
+</form>

@@ -1,0 +1,10 @@
+<h2>Editar Sucursal</h2>
+
+<app-formulario-sucursal 
+*ngIf="modelo"
+[errores]="errores"
+[modelo]="modelo"
+(guardarCambios)="guardarCambios($event)" 
+></app-formulario-sucursal>
+
+<mat-spinner *ngIf="!modelo"></mat-spinner>
