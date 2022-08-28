@@ -5,6 +5,17 @@
         <mat-error *ngIf="form.invalid">El campo nombre es requerido</mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
+        <mat-label>Seleccione el tipo del servicio</mat-label>
+        <mat-select formControlName="tipoServicioId">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let item of TipoServiciosCombo" [value]="item.id">
+                {{item.nombre}}
+            </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.invalid"> This field is required</mat-error>
+        <mat-hint>Debe escoger el tipo de servicio pertinente</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
         <mat-label>Precio</mat-label>
         <input formControlName="valor" type="number" matInput />
     </mat-form-field>
@@ -12,17 +23,15 @@
         <mat-label>Descripcion</mat-label>
         <textarea formControlName="descripcion" matInput></textarea> 
     </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>Seleccione el tipo del servicio</mat-label>
-        <mat-select formControlName="tipoServicioId">
-            <mat-option>--</mat-option>
-            <mat-option *ngFor="let item of TipoServiciosCombo" value="item.id">
-                {{item.nombre}}
-            </mat-option>
-        </mat-select>
-        <mat-error *ngIf="form.invalid"> This field is required</mat-error>
-        <mat-hint>Debe escoger el tipo de servicio pertinente</mat-hint>
-    </mat-form-field>
+
+    <h3>Seleccionar una foto</h3>
+    <div style="margin-bottom: 1rem;">
+        <app-input-img
+        [urlImagenActual]="modelo?.foto"
+        (archivoSeleccionado)="archivoSeleccionado($event)"
+        ></app-input-img>
+    </div>
+
     <mat-checkbox formControlName="estado">Estado</mat-checkbox>
     <div>
         <button mat-flat-button color="primary" [disabled]="form.invalid">Guardar Cambios</button>

@@ -1,1 +1,26 @@
-<p>formulario-paquete works!</p>
+<form [formGroup]="form" (submit)="OnSubmit()">
+    <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input formControlName="nombre" matInput /> 
+        <mat-error *ngIf="form.invalid">El campo nombre es requerido</mat-error>
+    </mat-form-field>
+    <div style="width:95%; margin-bottom:1rem;">
+        <form [formGroup]="dropDownForm">
+            <ng-multiselect-dropdown
+                [placeholder]="'Selecciona los servicios que contendra el paquete'"
+                [settings]="dropdownSettings"
+                [data]="dropdownList"
+                formControlName="myItems">
+            </ng-multiselect-dropdown>
+        </form>
+    </div>
+    <app-add-sucursales
+    [sucursalesSeleccionadas]="sucursalesSeleccionadas"
+    ></app-add-sucursales>
+
+    <mat-checkbox formControlName="estado">Estado</mat-checkbox>
+    <div>
+        <button mat-flat-button color="primary" [disabled]="form.invalid">Guardar Cambios</button>
+        <a mat-stroked-button routerLink="/paquetes">Cancelar</a>
+    </div>
+</form>

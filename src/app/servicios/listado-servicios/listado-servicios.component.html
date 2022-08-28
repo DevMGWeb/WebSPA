@@ -1,3 +1,74 @@
 <h2>Servicios</h2>
 
 <button mat-flat-button color="primary" routerLink="/servicios/crear">Crear nuevo</button>
+
+<app-listado-generico [listado]="servicios">    
+    <ng-container contenido>
+        <table #table mat-table [dataSource]="servicios" class="mat-elevation-z8 tabla-indice">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef>Id</th>
+                <td mat-cell *matCellDef="let element">{{element.id}}</td>
+            </ng-container>
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef>Nombre</th>
+                <td mat-cell *matCellDef="let element">{{element.nombre}}</td>
+            </ng-container>
+            <ng-container matColumnDef="valor">
+                <th mat-header-cell *matHeaderCellDef>Precio</th>
+                <td mat-cell *matCellDef="let element">{{element.valor}}</td>
+            </ng-container>
+            <ng-container matColumnDef="estado">
+                <th mat-header-cell *matHeaderCellDef>Estado</th>
+                <td mat-cell *matCellDef="let element">
+                    <div *ngIf="element.estado">
+                        <mat-icon style="color:green" >check</mat-icon>
+                    </div> 
+                    <div *ngIf="!element.estado">
+                        <mat-icon style="color:red">block</mat-icon>
+                    </div>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="acciones">
+                <th mat-header-cell *matHeaderCellDef>Acciones</th>
+                <td mat-cell *matCellDef="let element">
+                    <a routerLink="/servicios/editar/{{element.id}}"
+                    mat-flat-button color="primary"
+                    >Editar</a>
+                    <div *ngIf="element.estado" style="display: inline;">
+                        <button mat-flat-button color="warn" style="margin-right: 1rem;"
+                        [swal]="{title: 'Confirmacion', 
+                            text: '¿Esta seguro que desea anular el registro?',
+                            showCancelButton: true}"
+                        (confirm)="anular(element.id, element.nombre)"
+                        >Anular</button>
+                        <button mat-flat-button disabled>Borrar</button>
+                    </div>
+                    <div *ngIf="!element.estado" style="display: inline;">
+                        <button mat-flat-button style="margin-right: 1rem; background-color:#1caf1c; color:white"
+                        [swal]="{title: 'Confirmacion', 
+                            text: '¿Esta seguro que desea activar el registro?',
+                            showCancelButton: true}"
+                        (confirm)="activar(element.id, element.nombre)"
+                        >Activar</button>
+                        <button mat-flat-button color="warn" 
+                        [swal]="{title: 'Confirmacion', 
+                            text: '¿Esta seguro que desea borrar el registro?',
+                            showCancelButton: true}"
+                        (confirm)="borrar(element.id, element.nombre)"
+                        >Borrar</button>
+                    </div>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="columnasAMostrar"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnasAMostrar"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20, 50]" showFirstLastButtons
+        [length]="cantidadTotalRegistros" [pageSize]="cantidadRegistrosAMostrar"
+        class="mat-elevation-z8"
+        (page)="actualizarPaginacion($event)"
+        >
+        </mat-paginator>
+
+    </ng-container>
+</app-listado-generico>

@@ -5,6 +5,7 @@ export interface servicioCreacionDTO {
     descripcion: string;
     estado: boolean;
     tipoServicioId: number;
+    foto: string;
 }
 
 export interface servicioDTO {
@@ -14,4 +15,10 @@ export interface servicioDTO {
     descripcion: string;
     estado: boolean;
     tipoServicioId: number;
+    foto: File;
+}
+
+export interface servicioPaqueteDTO {
+    id: number;
+    nombre: string;
 }

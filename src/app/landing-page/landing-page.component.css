@@ -1,0 +1,21 @@
+.example-card {
+    max-width: 300px;
+    margin-bottom: 8px;
+}
+
+.example-flex-container button{
+    margin-right:1rem;
+}
+
+.cards-contenedor{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+}
+
+.card-contenedor {
+    margin-right: 2%;
+    margin-bottom: 10px;
+    text-align: center; 
+}

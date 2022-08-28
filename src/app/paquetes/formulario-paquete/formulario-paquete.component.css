@@ -1,0 +1,20 @@
+form {
+    max-width: 500px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+button {
+    margin-right: 1rem;
+}
+
+mat-checkbox {
+    margin-bottom: 1rem;
+}
+
+ :host ::ng-deep .multiselect-dropdown .dropdown-btn {
+    border: 1px solid #adadad75!important;
+    color: #1c1a1ab5;
+}

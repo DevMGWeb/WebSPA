@@ -1,1 +1,10 @@
-<p>editar-paquete works!</p>
+<h2>Editar Paquete</h2>
+
+<app-formulario-paquete
+*ngIf="modelo"
+[errores]="errores"
+[modelo]="modelo"
+(guardarCambios)="guardarCambios($event)"
+></app-formulario-paquete>
+
+<mat-spinner *ngIf="!modelo"></mat-spinner>

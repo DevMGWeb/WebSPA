@@ -6,6 +6,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { FormsModule } from '@angular/forms';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,6 +36,7 @@ import { ListadoPaquetesComponent } from './paquetes/listado-paquetes/listado-pa
 import { EditarPaqueteComponent } from './paquetes/editar-paquete/editar-paquete.component';
 import { FormularioPaqueteComponent } from './paquetes/formulario-paquete/formulario-paquete.component';
 import { InputImgComponent } from './utilidades/input-img/input-img.component';
+import { AddSucursalesComponent } from './sucursales/add-sucursales/add-sucursales.component';
 
 @NgModule({
   declarations: [
@@ -61,9 +64,11 @@ import { InputImgComponent } from './utilidades/input-img/input-img.component';
     EditarPaqueteComponent,
     FormularioPaqueteComponent,
     InputImgComponent,
+    AddSucursalesComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
@@ -71,7 +76,8 @@ import { InputImgComponent } from './utilidades/input-img/input-img.component';
     HttpClientModule,
     ReactiveFormsModule,
     LeafletModule,
-    SweetAlert2Module.forRoot()
+    SweetAlert2Module.forRoot(),
+    NgMultiSelectDropDownModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

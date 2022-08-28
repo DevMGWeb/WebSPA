@@ -1,0 +1,52 @@
+<form action="">
+    <mat-form-field appearance="outline">
+        <mat-label>Seleccione las sucursales donde se pondra en venta el paquete</mat-label>
+        <mat-select [formControl]="controlselection" (selectionChange)="optionSelected($event)">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let item of sucursalCombo" [value]="item.id">
+                {{item.nombre}}
+            </mat-option>
+        </mat-select>
+        <mat-hint>Debe ir seleccionando las sucursales que contienen el paquete</mat-hint>
+    </mat-form-field>
+</form>
+
+<table
+    *ngIf="sucursalesSeleccionadas.length > 0"
+    mat-table
+    [dataSource]="sucursalesSeleccionadas"
+    class="mat-elevation-z8"
+    cdkDropList
+    [cdkDropListData]="sucursalesSeleccionadas"
+>
+    <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+        <td mat-cell *matCellDef="let element">
+            {{element.nombre}}
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="valor">
+        <th mat-header-cell *matHeaderCellDef>Precio</th>
+        <td mat-cell *matCellDef="let element">
+            <mat-form-field appearance="outline" style="margin-top: 10px;">
+                <mat-label>Precio del paquete</mat-label>
+                <input matInput [(ngModel)]="element.valor" />
+            </mat-form-field>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef>Acción</th>
+        <td mat-cell *matCellDef="let element">
+            <mat-icon mat-list-icon (click)="eliminar(element)">
+                close
+            </mat-icon>
+        </td>
+    </ng-container>
+
+    <tr mat-row *matRowDef="let row; columns: columnasAMostrar"
+    >
+
+    </tr>
+</table>

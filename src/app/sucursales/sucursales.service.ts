@@ -13,6 +13,10 @@ export class SucursalesService {
 
   private apiURL = environment.apiUrl + 'sucursales';
 
+  public obtenerCombo(): Observable<sucursalDTO[]> {
+    return this.http.get<sucursalDTO[]>(`${this.apiURL}/GetCombo`);
+  }
+
   public obtenerPaginado(pagina: number, cantidadElementosAMostrar: number): Observable<any> {
     let params = new HttpParams();
     params = params.append('pagina', pagina.toString());

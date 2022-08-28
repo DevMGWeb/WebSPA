@@ -14,7 +14,6 @@ import { ServiciosService } from '../servicios.service';
 export class CrearServicioComponent implements OnInit {
 
   constructor(private serviciosService: ServiciosService,
-    private tipoServicioService: TipoServiciosService,
     private router: Router) { }
 
   errores: string[] = [];
@@ -22,10 +21,6 @@ export class CrearServicioComponent implements OnInit {
   tipoServicios: tipoServicioDTO[];
 
   ngOnInit(): void {
-    this.tipoServicioService.obtenerCombo()
-    .subscribe(values => {
-      this.tipoServicios = values;
-    })
   }
 
   guardarCambios(servicio: servicioCreacionDTO){
