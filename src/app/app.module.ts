@@ -37,6 +37,10 @@ import { EditarPaqueteComponent } from './paquetes/editar-paquete/editar-paquete
 import { FormularioPaqueteComponent } from './paquetes/formulario-paquete/formulario-paquete.component';
 import { InputImgComponent } from './utilidades/input-img/input-img.component';
 import { AddSucursalesComponent } from './sucursales/add-sucursales/add-sucursales.component';
+import { AutorizadoComponent } from './seguridad/autorizado/autorizado.component';
+import { LoginComponent } from './seguridad/login/login.component';
+import { RegistroComponent } from './seguridad/registro/registro.component';
+import { FormularioAutenticacionComponent } from './seguridad/formulario-autenticacion/formulario-autenticacion.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +69,10 @@ import { AddSucursalesComponent } from './sucursales/add-sucursales/add-sucursal
     FormularioPaqueteComponent,
     InputImgComponent,
     AddSucursalesComponent,
+    AutorizadoComponent,
+    LoginComponent,
+    RegistroComponent,
+    FormularioAutenticacionComponent,
   ],
   imports: [
     BrowserModule,

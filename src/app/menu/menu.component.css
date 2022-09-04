@@ -12,3 +12,7 @@ div {
 .espacio {
     flex: 1 1 auto;
 }
+
+app-autorizado {
+    display: flex;
+}

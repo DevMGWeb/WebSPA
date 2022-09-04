@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { LandingPageDTO } from '../landing-page/LandingPageDTO';
 import { servicioCreacionDTO, servicioDTO, servicioPaqueteDTO } from './servicio';
 
 @Injectable({
@@ -12,6 +13,10 @@ export class ServiciosService {
   constructor(private http: HttpClient) { }
 
   private apiURL = environment.apiUrl + 'servicios';
+
+  public obtenerLandingPage(): Observable<LandingPageDTO> {
+    return this.http.get<LandingPageDTO>(`${this.apiURL}/ladingPage`);
+  }
 
   public obtenerPaginado(pagina: number, cantidadElementosAMostrar: number): Observable<any> {
     let params = new HttpParams();

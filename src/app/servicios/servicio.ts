@@ -1,3 +1,4 @@
+import { tipoServicioDTO } from "../tipo-servicio/tipo-servicio";
 
 export interface servicioCreacionDTO {
     nombre: string;
@@ -15,6 +16,7 @@ export interface servicioDTO {
     descripcion: string;
     estado: boolean;
     tipoServicioId: number;
+    tipoServicio: tipoServicioDTO;
     foto: File;
 }
 

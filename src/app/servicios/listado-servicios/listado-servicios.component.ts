@@ -15,7 +15,7 @@ export class ListadoServiciosComponent implements OnInit {
   constructor(private serviciosService: ServiciosService) { }
 
   servicios: servicioDTO[];
-  columnasAMostrar = ['id', 'nombre', 'valor', 'estado', 'acciones'];
+  columnasAMostrar = ['id', 'nombre', 'tiposervicio','valor', 'estado', 'acciones'];
   cantidadTotalRegistros;
   paginaActual=1;
   cantidadRegistrosAMostrar = 10;

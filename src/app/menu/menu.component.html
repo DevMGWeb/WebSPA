@@ -26,33 +26,48 @@
         <mat-icon>share</mat-icon>
         </button>
     </div> -->
-    <div>
-        <a mat-button routerLink="/sucursales">
-            Sucursales
-        </a>
-    </div>
-    <div>
-        <a mat-button routerLink="/tipo-servicios">
-            Tipo Servicio
-        </a>
-    </div>
-    <div>
-        <a mat-button routerLink="/servicios">
-            Servicios
-        </a>
-    </div>
-    <div>
-        <a mat-button routerLink="/paquetes">
-            Paquetes
-        </a>
-    </div>
-    <!-- <div>
-        <a mat-button routerLink="/paquetes">
-            Usuarios
-        </a>
-    </div> -->
+    <app-autorizado [rol]="'admin'">
+        <ng-container autorizado>
+            <div>
+                <a mat-button routerLink="/sucursales">
+                    Sucursales
+                </a>
+            </div>
+            <div>
+                <a mat-button routerLink="/tipo-servicios">
+                    Tipo Servicio
+                </a>
+            </div>
+            <div>
+                <a mat-button routerLink="/servicios">
+                    Servicios
+                </a>
+            </div>
+            <div>
+                <a mat-button routerLink="/paquetes">
+                    Paquetes
+                </a>
+            </div>
+            <!-- <div>
+                <a mat-button routerLink="/paquetes">
+                    Usuarios
+                </a>
+            </div> -->
+        </ng-container>
+    </app-autorizado>
     <div class="espacio"></div>
+    <app-autorizado>
+        <ng-container autorizado>
+            <span>Hola, {{seguridadService.obtenerCampoJWT('email')}} </span>
+            <a mat-button (click)="seguridadService.logout()" >Logout</a>
+        </ng-container>
+        <ng-container noAutorizado>
+            <a mat-button routerLink="login">Login <mat-icon>login</mat-icon> </a>
+            <a mat-button routerLink="registro">Registro <mat-icon>add</mat-icon></a>
+        </ng-container>
+    </app-autorizado>
+   
 
-    <a mat-button routerLink="login">Login <mat-icon>login</mat-icon> </a>
-    <a mat-button routerLink="registro">Registro <mat-icon>add</mat-icon></a>
+
+
 </mat-toolbar>

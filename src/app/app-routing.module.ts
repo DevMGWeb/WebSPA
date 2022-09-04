@@ -13,21 +13,26 @@ import { ListadoServiciosComponent } from './servicios/listado-servicios/listado
 import { CrearPaqueteComponent } from './paquetes/crear-paquete/crear-paquete.component';
 import { EditarPaqueteComponent } from './paquetes/editar-paquete/editar-paquete.component';
 import { ListadoPaquetesComponent } from './paquetes/listado-paquetes/listado-paquetes.component';
+import { EsAdminGuard } from './es-admin.guard';
+import { LoginComponent } from './seguridad/login/login.component';
+import { RegistroComponent } from './seguridad/registro/registro.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
-  {path:'sucursales', component: ListadoSucursalesComponent},
-  {path:'sucursales/crear', component: CrearSucursalComponent},
-  {path:'sucursales/editar/:id', component: EditarSucursalComponent},
-  {path:'tipo-servicios', component: ListadoTipoServicioComponent},
-  {path:'tipo-servicios/crear', component: CrearTipoServicioComponent},
-  {path:'tipo-servicios/editar/:id', component: EditarTipoServicioComponent},
-  {path:'servicios', component: ListadoServiciosComponent},
-  {path:'servicios/crear', component: CrearServicioComponent},
-  {path:'servicios/editar/:id', component: EditarServicioComponent},
-  {path:'paquetes', component: ListadoPaquetesComponent},
-  {path:'paquetes/crear', component: CrearPaqueteComponent},
-  {path:'paquetes/editar/:id', component: EditarPaqueteComponent},
+  {path:'sucursales', component: ListadoSucursalesComponent, canActivate: [EsAdminGuard]},
+  {path:'sucursales/crear', component: CrearSucursalComponent, canActivate: [EsAdminGuard]},
+  {path:'sucursales/editar/:id', component: EditarSucursalComponent, canActivate: [EsAdminGuard]},
+  {path:'tipo-servicios', component: ListadoTipoServicioComponent, canActivate: [EsAdminGuard]},
+  {path:'tipo-servicios/crear', component: CrearTipoServicioComponent, canActivate: [EsAdminGuard]},
+  {path:'tipo-servicios/editar/:id', component: EditarTipoServicioComponent, canActivate: [EsAdminGuard]},
+  {path:'servicios', component: ListadoServiciosComponent, canActivate: [EsAdminGuard]},
+  {path:'servicios/crear', component: CrearServicioComponent, canActivate: [EsAdminGuard]},
+  {path:'servicios/editar/:id', component: EditarServicioComponent, canActivate: [EsAdminGuard]},
+  {path:'paquetes', component: ListadoPaquetesComponent, canActivate: [EsAdminGuard]},
+  {path:'paquetes/crear', component: CrearPaqueteComponent, canActivate: [EsAdminGuard]},
+  {path:'paquetes/editar/:id', component: EditarPaqueteComponent, canActivate: [EsAdminGuard]},
+  {path:'login', component:LoginComponent},
+  {path:'registro', component: RegistroComponent},
   {path:'**', redirectTo: ''},
 ];
 
