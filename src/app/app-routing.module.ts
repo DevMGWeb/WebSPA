@@ -16,6 +16,7 @@ import { ListadoPaquetesComponent } from './paquetes/listado-paquetes/listado-pa
 import { EsAdminGuard } from './es-admin.guard';
 import { LoginComponent } from './seguridad/login/login.component';
 import { RegistroComponent } from './seguridad/registro/registro.component';
+import { IndiceUsuariosComponent } from './seguridad/indice-usuarios/indice-usuarios.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
@@ -31,6 +32,7 @@ const routes: Routes = [
   {path:'paquetes', component: ListadoPaquetesComponent, canActivate: [EsAdminGuard]},
   {path:'paquetes/crear', component: CrearPaqueteComponent, canActivate: [EsAdminGuard]},
   {path:'paquetes/editar/:id', component: EditarPaqueteComponent, canActivate: [EsAdminGuard]},
+  {path:'usuarios', component: IndiceUsuariosComponent, canActivate: [EsAdminGuard]},
   {path:'login', component:LoginComponent},
   {path:'registro', component: RegistroComponent},
   {path:'**', redirectTo: ''},

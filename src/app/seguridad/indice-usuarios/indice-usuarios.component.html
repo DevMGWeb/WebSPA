@@ -1,0 +1,54 @@
+<h2>Usuarios</h2>
+
+<app-listado-generico [listado]="usuarios">    
+    <ng-container contenido>
+        <table #table mat-table [dataSource]="usuarios" class="mat-elevation-z8 tabla-indice">
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef>Email</th>
+                <td mat-cell *matCellDef="let element">{{element.email}}</td>
+            </ng-container>
+            <ng-container matColumnDef="rol">
+                <th mat-header-cell *matHeaderCellDef>Admin</th>
+                <td mat-cell *matCellDef="let element">
+                    <div *ngIf="element.estado">
+                        <mat-icon style="color:green" >check</mat-icon>
+                    </div> 
+                    <div *ngIf="!element.estado">
+                        <mat-icon style="color:red">block</mat-icon>
+                    </div>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="acciones">
+                <th mat-header-cell *matHeaderCellDef>Acciones</th>
+                <td mat-cell *matCellDef="let element">
+                    <div *ngIf="!element.estado" style="display: inline;">
+                        <button mat-flat-button color="primary" 
+                        [swal]="{title: 'Confirmacion', 
+                            text: '¿Esta seguro que desea realizar la operacion?',
+                            showCancelButton: true}"
+                        (confirm)="hacerAdmin(element.id, element.nombre)"
+                        >Hacer Admin</button>
+                    </div>
+                    <div *ngIf="element.estado" style="display: inline;">
+                        <button mat-flat-button color="warn" 
+                        [swal]="{title: 'Confirmacion', 
+                            text: '¿Esta seguro que desea realizar la operacion?',
+                            showCancelButton: true}"
+                        (confirm)="removerAdmin(element.id, element.nombre)"
+                        >Remover Admin</button>
+                    </div>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="columnasAMostrar"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnasAMostrar"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20, 50]" showFirstLastButtons
+        [length]="cantidadTotalRegistros" [pageSize]="cantidadRegistrosAMostrar"
+        class="mat-elevation-z8"
+        (page)="actualizarPaginacion($event)"
+        >
+        </mat-paginator>
+
+    </ng-container>
+</app-listado-generico>

@@ -20,7 +20,7 @@ import { CrearPaqueteComponent } from './paquetes/crear-paquete/crear-paquete.co
 import { ListadoGenericoComponent } from './utilidades/listado-generico/listado-generico.component';
 import { SubmenuComponent } from './menu/submenu/submenu.component';
 import { ListadoSucursalesComponent } from './sucursales/listado-sucursales/listado-sucursales.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EditarSucursalComponent } from './sucursales/editar-sucursal/editar-sucursal.component';
 import { FormularioSucursalComponent } from './sucursales/formulario-sucursal/formulario-sucursal.component';
 import { MostrarErroresComponent } from './utilidades/mostrar-errores/mostrar-errores.component';
@@ -41,6 +41,8 @@ import { AutorizadoComponent } from './seguridad/autorizado/autorizado.component
 import { LoginComponent } from './seguridad/login/login.component';
 import { RegistroComponent } from './seguridad/registro/registro.component';
 import { FormularioAutenticacionComponent } from './seguridad/formulario-autenticacion/formulario-autenticacion.component';
+import { SeguridadInterceptorService } from './seguridad/seguridad-interceptor.service';
+import { IndiceUsuariosComponent } from './seguridad/indice-usuarios/indice-usuarios.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +75,7 @@ import { FormularioAutenticacionComponent } from './seguridad/formulario-autenti
     LoginComponent,
     RegistroComponent,
     FormularioAutenticacionComponent,
+    IndiceUsuariosComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,7 +90,11 @@ import { FormularioAutenticacionComponent } from './seguridad/formulario-autenti
     SweetAlert2Module.forRoot(),
     NgMultiSelectDropDownModule.forRoot(),
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: SeguridadInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

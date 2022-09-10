@@ -10,7 +10,7 @@
                         <img mat-card-md-image src="{{itemService.foto}}">
                     </mat-card-title-group>
                     <mat-card-content>
-                        {{itemService.descripcion}}
+                        {{itemService.descripcion}} <a routerLink="/servicios/detalle/{{itemService.id}}"> Mas info </a>
                     </mat-card-content>
                     <mat-card-actions>
                         <div class="example-button-row">
