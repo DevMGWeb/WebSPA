@@ -17,6 +17,7 @@ import { EsAdminGuard } from './es-admin.guard';
 import { LoginComponent } from './seguridad/login/login.component';
 import { RegistroComponent } from './seguridad/registro/registro.component';
 import { IndiceUsuariosComponent } from './seguridad/indice-usuarios/indice-usuarios.component';
+import { DetalleServicioComponent } from './servicios/detalle-servicio/detalle-servicio.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path:'servicios', component: ListadoServiciosComponent, canActivate: [EsAdminGuard]},
   {path:'servicios/crear', component: CrearServicioComponent, canActivate: [EsAdminGuard]},
   {path:'servicios/editar/:id', component: EditarServicioComponent, canActivate: [EsAdminGuard]},
+  {path:'servicios/detalle/:id', component: DetalleServicioComponent},
   {path:'paquetes', component: ListadoPaquetesComponent, canActivate: [EsAdminGuard]},
   {path:'paquetes/crear', component: CrearPaqueteComponent, canActivate: [EsAdminGuard]},
   {path:'paquetes/editar/:id', component: EditarPaqueteComponent, canActivate: [EsAdminGuard]},

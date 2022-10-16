@@ -20,6 +20,7 @@ export class FormularioServicioComponent implements OnInit {
 
   TipoServiciosCombo: tipoServicioDTO[];
   imagenCambiada = false;
+  filename: File;
 
   @Input()
   errores: string[] = [];
@@ -57,5 +58,9 @@ export class FormularioServicioComponent implements OnInit {
   archivoSeleccionado(archivo:File){
     this.form.get('foto').setValue(archivo);
     this.imagenCambiada = true;
+  }
+
+  selectedFiles(archivos:File){
+
   }
 }

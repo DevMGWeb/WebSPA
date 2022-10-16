@@ -23,12 +23,14 @@ export class InputImgComponent implements OnInit {
 
   change(event){
     if(event.target.files.length > 0){
-      const file: File = event.target.files[0];
-      toBase64(file).then((value:string)=> this.imagenBase64 = value)
-      .catch(error => console.log(error));
-
-      this.archivoSeleccionado.emit(file);
-      this.urlImagenActual = null;
+      if(event.target.files.length == 1){
+        const file: File = event.target.files[0];
+        toBase64(file).then((value:string)=> this.imagenBase64 = value)
+        .catch(error => console.log(error));
+  
+        this.archivoSeleccionado.emit(file);
+        this.urlImagenActual = null;
+      }
     }
   }
 

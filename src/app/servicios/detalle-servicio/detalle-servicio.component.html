@@ -1,0 +1,14 @@
+<div class="contenedor-servicio">
+    <h2>{{modelo.nombre}} </h2>
+    <h4>Fecha Publicacion: {{ FechaPublicacion | date: 'dd/MM/yyyy'}}</h4>
+    <h4>Fecha Ultima Actualizacion: {{FechaActualizacion | date: 'dd/MM/yyyy'}}</h4>
+    <img width="40%" src="{{modelo.foto}}">
+    <p>{{modelo.descripcion}}</p>
+    <p> <strong>Precio: {{ modelo.valor | currency: 'USD' }}</strong> </p>
+    
+    <!-- falta un carrusel de imagenes secundarias, 
+        fecha publicacion, fecha de actualizacion, 
+        agregar un sistema de puntuacion por estrella,
+        boton para agregar al carrito,
+        Comentarios -->
+</div>
